@@ -1,0 +1,158 @@
+---
+name: Zhengting (Johnathan)
+surname: He
+position: "MHS Candidate in Epidemiology"
+address: "Baltimore, US"
+profilepic: "./img/me.jpg"
+email: "zhe33@jhu.edu"
+github: hezht3
+linkedin: zhengting-johnathan-he
+orcid: 0000-0003-4781-3757
+date: "`r format(Sys.time(), '%B %Y')`"
+headcolor: 990000
+aboutme: "I am a first year master student in genetic epidemiology at Johns Hopkins Bloomberg School of Public Health. I have a deep driven passion for research and data analysis. This CV was compiled with R package {vitae}."
+docname: CV
+output: vitae::awesomecv
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE,
+                      message = FALSE)
+
+require(xfun)
+
+packages <- c('vitae'     # The CV's LaTeX Template
+             ,'tibble'    # Data structure for tribbles
+             ,'magrittr'  # The Pipe %>%
+             ,'here'      # Relative File Paths
+             ,'readr'     # Data Loading
+             ,'glue'      # String Manipulation
+            )
+
+xfun::pkg_attach2(packages, message = FALSE)
+
+source(file = here("r","data.r"), encoding = "utf-8")
+
+```
+
+# Education
+
+```{r EDUCATION}
+
+edu %>%
+  detailed_entries(
+    with = inst,
+    what = degree,
+    why = detail,
+    when = glue::glue("{startYear} --> {endYear}",.na = ""),
+    where = where
+  )
+
+```
+
+# Employment
+
+```{r EMPLOYMENT}
+
+work %>%
+  detailed_entries(
+    with = title,
+    what = unit,
+    why = detail,
+    when = glue::glue("{startMonth} {startYear} --> {endMonth} {endYear}",.na = ""),
+    where = where
+  )
+
+```
+
+# Skills
+
+```{r SKILLS}
+
+skills %>%
+  detailed_entries(
+    with = area,
+    what = skills
+  )
+
+```
+
+# Publications
+
+<!-- \footnotesize -->
+
+```{r PUBLICATIONS, size = 6}
+
+bibliography_entries("./r/my_publications.bib") %>%
+    arrange(desc(id))
+
+```
+
+# Manuscripts
+
+<!-- \footnotesize -->
+
+```{r MANUSCRIPTS, size = 6}
+
+bibliography_entries("./r/my_manuscripts.bib") %>%
+    arrange(desc(id))
+
+```
+
+# Conference
+
+```{r}
+
+conf %>%
+  detailed_entries(
+    with = title,
+    when = year,
+    where = where
+  )
+
+```
+
+# Research Experience
+
+<!-- \linespread{1.6} -->
+<!-- \setlength{\parskip}{1.5em} -->
+<!-- \renewcommand{\baselinestretch}{1.5} -->
+
+```{r PROJECTS, format = "latex"}
+
+projects %>%
+  detailed_entries(
+    with = area,
+    what = accomplishment,
+    why = detail,
+    when = glue::glue("{startMonth} {startYear} --> {endMonth} {endYear}",.na = "")
+  )
+
+```
+
+# Extracurricular Activities
+
+```{r EXTRACURRICULAR ACTIVITIES}
+
+act %>%
+  detailed_entries(
+    with = area,
+    what = accomplishment,
+    when = glue::glue("{startMonth} {startYear} --> {endMonth} {endYear}",.na = "")
+  )
+
+```
+
+# Extracurricular Course Certificates
+
+```{r EXTRACURRICULAR COURSE CERTIFICATES}
+
+cert %>%
+  detailed_entries(
+    with = title,
+    what = platform,
+    when = year
+  )
+
+```
