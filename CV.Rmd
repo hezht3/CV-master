@@ -1,12 +1,12 @@
 ---
 name: Zhengting (Johnathan)
 surname: He
-position: "MHS Candidate in Epidemiology"
+position: "MHS Candidate in Genetic Epidemiology"
 address: "Baltimore, US"
 profilepic: "./img/me.jpg"
 email: "zhe33@jhu.edu"
 github: hezht3
-linkedin: zhengting-johnathan-he
+linkedin: zhengting-johnathan-he-98206a1a0
 orcid: 0000-0003-4781-3757
 date: "`r format(Sys.time(), '%B %Y')`"
 headcolor: 990000
